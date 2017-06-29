@@ -1,0 +1,66 @@
+
+<h1>POKEMONES</h1>
+<div class="row" >
+  <div class="col-md-12 text-right">
+    <button type="button" [routerLink]="['/pokemon','nuevo']" class="btn btn-outline-primary"><i class="fa fa-plus-circle" aria-hidden="true"> Nuevo</i></button>
+  </div>
+</div>
+<br>
+<br>
+<div class="row">
+  <table class="table">
+    <thead class="thead-inverse">
+    <tr>
+      <th>#</th>
+      <th>Descripcion</th>
+      <th>Nombre</th>
+      <th>Biografia</th>
+      <th>Tipo</th>
+      <th>Opciones</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr class="align-items-center" *ngFor="let poke of pokedex; let i=index">
+      <th scope="row">{{i+1}}</th>
+      <td><img [src]="poke.url" class="pokeImg"></td>
+      <td>{{poke.nombre}}</td>
+      <td>{{poke.bio}}</td>
+      <td>{{poke.tipo}}</td>
+      <td><a [routerLink]="['/pokemon',poke.id]"  class="btn btn-outline-info">ver Detalles</a>
+        <button  type="button" (click)="eliminar(poke.id,i)" class="btn btn-danger"><i class="fa fa-trash-o" aria-hidden="true"></i>eliminar</button></td>
+    </tr>
+
+    </tbody>
+  </table>
+</div>
+
+<h1>POKEMONES API</h1>
+
+<div class="row">
+  <table class="table">
+    <thead class="thead-inverse">
+    <tr>
+      <th>#</th>
+      <th>Descripcion</th>
+      <th>Nombre</th>
+      <th>Biografia</th>
+      <th>Tipo</th>
+      <th>Opciones</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr class="align-items-center" *ngFor="let   poke of pokesApi; let i=index">
+      <th scope="row">{{i+1}}</th>
+      <!--<th scope="row">{{poke.id}}</th>-->
+      <td><img [src]="poke.url" class="pokeImg"></td>
+      <td>{{poke.nombre}}</td>
+      <td>{{poke.bio}}</td>
+      <td>{{poke.tipo}}</td>
+      <td><a (click)="elegir(i)"  class="btn btn-outline-info">Escojer</a>
+      </td>
+    </tr>
+
+    </tbody>
+  </table>
+</div>
+
